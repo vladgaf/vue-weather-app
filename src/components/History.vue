@@ -107,7 +107,6 @@ const handleDateChange = () => {
 </template>
 
 <style>
-/* Общие стили карточки */
 .card-history {
   display: flex;
   width: 100%;
@@ -116,11 +115,6 @@ const handleDateChange = () => {
   flex-shrink: 2;
 }
 
-.card-title {
-  /* Добавьте стили для заголовка карточки */
-}
-
-/* Стили для ввода даты */
 .input-container {
   margin-bottom: 1rem;
 }
@@ -137,14 +131,9 @@ const handleDateChange = () => {
   border-radius: 0.25rem;
 }
 
-/* Стили для состояния загрузки */
 .loading-container {
   padding: 2rem 0;
   text-align: center;
-}
-
-.loading-text {
-  /* Добавьте стили для текста загрузки */
 }
 
 /* Стили для исторических данных */
