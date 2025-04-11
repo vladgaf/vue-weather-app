@@ -27,7 +27,12 @@ h3 {
 }
 
 p {
-  margin: 5px;
+  margin: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
 }
 /* Форма поиска */
 .search-form {
