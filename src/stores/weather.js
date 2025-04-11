@@ -17,7 +17,7 @@ export const useWeatherStore = defineStore('weather', () => {
       error.value = null
       currentWeather.value = await fetchCurrentWeather(city)
       forecast.value = await fetchForecast(city)
-      //location.value = await fetchGeolocation(city)
+      location.value = await fetchGeolocation(city)
     } catch (err) {
       error.value = err.message || 'Failed to fetch weather data'
     } finally {
@@ -43,6 +43,7 @@ export const useWeatherStore = defineStore('weather', () => {
     history,
     loading,
     error,
+    location,
     fetchWeather,
     fetchWeatherHistory,
   }

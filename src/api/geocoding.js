@@ -11,6 +11,15 @@ export const fetchGeolocation = async (query) => {
       text: query,
     },
   })
+
+  console.log(response.data)
+
   const { lat, lon } = response.data.features[0].properties
-  return [lat, lon]
+  // Для карты
+  // return [lat, lon]
+
+  // Для ссылки на Google Maps
+  var url = `https://www.google.com/maps/place/${lat},${lon}`
+  console.log(url)
+  return url
 }
