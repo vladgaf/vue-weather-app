@@ -23,3 +23,15 @@ export const fetchGeolocation = async (query) => {
   console.log(url)
   return url
 }
+
+export const fetchCityByLocation = async (lat, lon) => {
+  const response = await axios.get(`${BASE_URL}/geocode/reverse`, {
+    params: {
+      lat: lat,
+      lon: lon,
+      apiKey: API_KEY,
+    },
+  })
+  const city = response.data.features[0].properties.city
+  return city
+}

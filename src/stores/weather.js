@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { fetchCurrentWeather, fetchForecast, fetchHistory } from '@/api/weather'
-import { fetchGeolocation } from '@/api/geocoding'
+import { fetchGeolocation, fetchCityByLocation } from '@/api/geocoding'
 
 export const useWeatherStore = defineStore('weather', () => {
   const currentWeather = ref(null)
@@ -10,6 +10,24 @@ export const useWeatherStore = defineStore('weather', () => {
   const loading = ref(false)
   const error = ref(null)
   const location = ref(null)
+
+  const fetchByLocation = async (lat, lon) => {
+    try {
+      loading.value = true
+      error.value = null
+
+      var city = await fetchCityByLocation(lat, lon)
+      console.log(city)
+
+      currentWeather.value = await fetchCurrentWeather(city)
+      forecast.value = await fetchForecast(city)
+      location.value = await fetchGeolocation(city)
+    } catch (err) {
+      error.value = err.message || 'Failed to fetch weather data'
+    } finally {
+      loading.value = false
+    }
+  }
 
   const fetchWeather = async (city) => {
     try {
@@ -44,6 +62,7 @@ export const useWeatherStore = defineStore('weather', () => {
     loading,
     error,
     location,
+    fetchByLocation,
     fetchWeather,
     fetchWeatherHistory,
   }

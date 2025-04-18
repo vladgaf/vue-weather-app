@@ -6,6 +6,4 @@ import { RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style scoped>
-/* Базовые стили теперь в main.css */
-</style>
+<style scoped></style>
